@@ -20,8 +20,6 @@ Route::get('/', function () {
 
 
 //Route to the homepage
-Route::get('/home', function(){
-    return view('home');
-});
+Route::view('/home', 'home')->name('home');
 
-Route::get('/attractions', [App\Http\Controllers\AttractionsController::class, 'index']);
+Route::get('/attractions', [App\Http\Controllers\AttractionsController::class, 'index'])->name('attractions');
