@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::get('/home', function(){
     return view('home');
 });
+
+Route::get('/attractions', [App\Http\Controllers\AttractionsController::class, 'index']);
