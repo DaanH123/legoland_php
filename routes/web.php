@@ -20,6 +20,10 @@ Route::get('/', function () {
 
 
 //Route to the homepage
-Route::view('/home', 'home')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/attractions', [App\Http\Controllers\AttractionsController::class, 'index'])->name('attractions');
+//Route to the tickets page
+Route::get('/tickets', [App\Http\Controllers\TicketsController::class, 'showTicketsPage'])->name('tickets');
+
+//Route to the attractions page
+Route::get('/attractions', [App\Http\Controllers\AttractionsController::class, 'showAttractionsPage'])->name('attractions');

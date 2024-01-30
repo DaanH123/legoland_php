@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\attractions;
+use App\Models\tickets;
 use Illuminate\Http\Request;
 
-class AttractionsController extends Controller
+class TicketsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // Fetch all attractions from the database
-        $attractions = attractions::all();
-    
-        // Return the attractions
-        return $attractions;
+        // Fetch all tickets from the database
+        $tickets = tickets::all();
+
+        // Return the tickets
+        return $tickets;
     }
 
-    public function showAttractionsPage()
+    public function showTicketsPage()
     {
-        // Fetch all attractions from the database
-        $attractions = attractions::all();
+        // Fetch all tickets from the database
+        $tickets = tickets::all();
 
-        // Return the attractions view and pass the attractions data to it
-        return view('attractions', compact('attractions'));
+        // Return the tickets view and pass the tickets data to it
+        return view('tickets', compact('tickets'));
     }
 
     /**
@@ -47,7 +47,7 @@ class AttractionsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(attractions $attractions)
+    public function show(tickets $tickets)
     {
         //
     }
@@ -55,7 +55,7 @@ class AttractionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(attractions $attractions)
+    public function edit(tickets $tickets)
     {
         //
     }
@@ -63,7 +63,7 @@ class AttractionsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, attractions $attractions)
+    public function update(Request $request, tickets $tickets)
     {
         //
     }
@@ -71,7 +71,7 @@ class AttractionsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(attractions $attractions)
+    public function destroy(tickets $tickets)
     {
         //
     }

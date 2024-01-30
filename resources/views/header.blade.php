@@ -1,11 +1,14 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-<div class="block md:flex justify-evenly items-center bg-yellow-400 p-4 w-[100%]">
+<header class="block md:flex justify-evenly items-center bg-yellow-400 p-4 w-[100%]">
     <div class="flex justify-around items-center w-full md:w-auto">
         <div class="w-28">
-            <img src="{{asset('LEGOLAND_PARKS_LOGO.svg')}}" alt="">
+            <a href="{{ route('home') }}">
+                <img src="{{asset('LEGOLAND_PARKS_LOGO.svg')}}" alt="">
+            </a>
         </div>
         <div class="md:hidden">
             <button id="hamburger-button" class="text-white">&#9776;</button>
@@ -15,7 +18,7 @@
         <a href="{{ route('home') }}">Home</a>
         <a href="">Over</a>
         <a href="{{ route('attractions') }}">Attracties</a>
-        <a href="">Tickets</a>
+        <a href="{{ route('tickets') }}">Tickets</a>
         <a href="">Contact</a>
     </div>
-</div>
+</header>
