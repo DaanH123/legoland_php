@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Default route (to the homepage)
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //Route to the homepage
