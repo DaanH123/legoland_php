@@ -25,3 +25,6 @@ Route::get('/tickets', [App\Http\Controllers\TicketsController::class, 'showTick
 
 //Route to the attractions page
 Route::get('/attractions', [App\Http\Controllers\AttractionsController::class, 'showAttractionsPage'])->name('attractions');
+
+//Route to the opening times page
+Route::get('/opentimes', [App\Http\Controllers\OpentimeController::class, 'index'])->name('opentimes');
