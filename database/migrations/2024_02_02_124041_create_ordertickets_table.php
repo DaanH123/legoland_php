@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('email');
             $table->string('street');
-            $table->string('housenumber');
+            $table->integer('housenumber');
             $table->string('city');
             $table->string('country');
             $table->string('state');
             $table->string('zipcode');
-            $table->string('tickettype');
+            $table->integer('tickettype');
             $table->integer('amount');
             $table->string('paymentmethod');
             $table->timestamps();
