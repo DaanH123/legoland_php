@@ -19,6 +19,7 @@
         <a href="">Over</a>
         <a href="{{ route('attractions') }}">Attracties</a>
         <a href="{{ route('tickets') }}">Tickets</a>
-        <a href="">Contact</a>
+        <a href="{{ route('opentime') }}">Openingstijden</a>
+        <a href="{{ route('contact') }}">Contact</a>
     </div>
 </header>

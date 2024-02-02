@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AttractionsController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OpentimeController;
+use App\Http\Controllers\OrderticketsController;
+use App\Http\Controllers\TicketsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +20,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Default route (to the homepage)
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 //Route to the homepage
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //Route to the tickets page
-Route::get('/tickets', [App\Http\Controllers\TicketsController::class, 'showTicketsPage'])->name('tickets');
+Route::get('/tickets', [TicketsController::class, 'showTicketsPage'])->name('tickets');
 
 //Route to the attractions page
-Route::get('/attractions', [App\Http\Controllers\AttractionsController::class, 'showAttractionsPage'])->name('attractions');
+Route::get('/attractions', [AttractionsController::class, 'showAttractionsPage'])->name('attractions');
 
 //Route to the opening times page
-Route::get('/opentimes', [App\Http\Controllers\OpentimeController::class, 'index'])->name('opentimes');
+Route::get('/opentimes', [OpentimeController::class, 'index'])->name('opentime');
+
+//Route to the contact page
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+//Post form to contact controller
+Route::post('postContactForm', [ContactController::class, 'store']);
+
+//Route to order page
+Route::get('/order', [OrderticketsController::class, 'index'])->name('order');

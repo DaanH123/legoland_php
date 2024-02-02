@@ -16,7 +16,10 @@
                     <a href="{{ route('tickets') }}" class="hover:underline me-4 md:me-6">Tickets</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline">Contact</a>
+                    <a href="#" class="hover:underline me-4 md:me-6">Contact</a>
+                </li>
+                <li>
+                    <a href="{{ route('opentime') }}" class="hover:underline">Openingstijden</a>
                 </li>
             </ul>
         </div>
