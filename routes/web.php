@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AttractionsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -43,3 +44,19 @@ Route::post('postContactForm', [ContactController::class, 'store']);
 
 //Route to order page
 Route::get('/order', [OrderticketsController::class, 'index'])->name('order');
+
+//Route to post ticket order
+Route::post('orderticket', [OrderticketsController::class, 'store']);
+
+//Route to the order confirmation page
+Route::get('/orderconfirmation', function() {
+    return view('ordercompleted');
+})->name('orderconfirmation');
+
+//Route to 404 not allowed page
+Route::get('/notallowed', function() {
+    return view('notallowed');
+})->name('notallowed');
+
+//Route to admin page
+Route::get('/admin', [AdminController::class, 'index'])->name('adminpage');

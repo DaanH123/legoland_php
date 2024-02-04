@@ -31,7 +31,25 @@ class OrderticketsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orderticket = new ordertickets();
+
+        $orderticket->firstname = $request->voornaam;
+        $orderticket->lastname = $request->achternaam;
+        $orderticket->email = $request->email;
+        $orderticket->street = $request->straat;
+        $orderticket->housenumber = $request->huisnummer;
+        $orderticket->city = $request->stad;
+        $orderticket->country = $request->land;
+        $orderticket->state = $request->provincie;
+        $orderticket->zipcode = $request->postcode;
+        $orderticket->tickettype = $request->input('ticket_type');
+        $orderticket->amount = $request->aantal;
+        $orderticket->paymentmethod = "Ideal";
+
+
+        $orderticket->save();
+
+        return redirect()->route('orderconfirmation');
     }
 
     /**

@@ -21,11 +21,17 @@
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
+        "classmap": [
+            "app/Support"
+        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Support/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
