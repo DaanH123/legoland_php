@@ -19,6 +19,7 @@
     <section class="bg-white">
         <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md shadow-lg my-10 border text-black rounded-2xl">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-black">Contact form</h2>
+            <!-- Form to contact -->
             <form action="{{ url('postContactForm') }}" method="post" class="space-y-8">
                 @csrf
                 <div>
@@ -31,7 +32,7 @@
                 </div>
                 <div class="sm:col-span-2">
                     <label for="message" class="block mb-2 text-sm font-medium text-black">Je bericht</label>
-                    <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-black rounded-lg shadow-sm border text-black focus:ring-yellow-400 focus:border-yellow-400 placeholder-gray-400  focus:ring-yellow-400 focus:border-yellow-4000" placeholder="Je bericht" name="message"></textarea>
+                    <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-black rounded-lg shadow-sm border text-black focus:ring-yellow-400 focus:border-yellow-400 placeholder-gray-400  focus:ring-yellow-400 focus:border-yellow-4000" placeholder="Je bericht" name="message" required></textarea>
                 </div>
                 <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-black rounded-lg sm:w-fit focus:ring-4 focus:outline-none focus:ring-yellow-400 focus:ring-yellow-400 bg-yellow-400 text-white">Send message</button>
             </form>

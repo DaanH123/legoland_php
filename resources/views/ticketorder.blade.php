@@ -22,11 +22,12 @@
                         </div>
 
                         <div class="lg:col-span-2">
+                                <!-- Form to order tickets -->
                                 <form action="{{ url('orderticket') }}" method="post" class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                     @csrf
                                     <div class="md:col-span-5">
                                         <label for="full_name">Ticket</label><br>
-                                        <select name="ticket_type" class="h-10 border mt-1 rounded px-4 bg-gray-50">
+                                        <select name="ticket_type" class="h-10 border mt-1 rounded px-4 bg-gray-50" required>
                                             <option value="">Kies een ticket</option>
                                             @foreach($tickets as $ticket)
                                             <option value="{{ $ticket->id }}">{{ $ticket->ticket_title }} - {{ $ticket->ticket_price }}</option>
@@ -36,56 +37,56 @@
 
                                     <div class="md:col-span-5">
                                         <label for="full_name">Aantal</label><br>
-                                        <input type="number" name="aantal" id="aantal" class="h-10 border mt-1 rounded px-4 bg-gray-50" value="" />
+                                        <input type="number" name="aantal" id="aantal" class="h-10 border mt-1 rounded px-4 bg-gray-50" value="" required/>
                                     </div>
 
                                     <div class="md:col-span-5">
                                         <label for="full_name">Voornaam</label>
-                                        <input type="text" name="voornaam" id="voornaam" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                                        <input type="text" name="voornaam" id="voornaam" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" required/>
                                     </div>
 
                                     <div class="md:col-span-5">
                                         <label for="full_name">Achternaam</label>
-                                        <input type="text" name="achternaam" id="achternaam" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                                        <input type="text" name="achternaam" id="achternaam" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" required/>
                                     </div>
 
                                     <div class="md:col-span-5">
                                         <label for="email">Email Address</label>
-                                        <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="email@domain.com" />
+                                        <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="email@domain.com" required/>
                                     </div>
 
                                     <div class="md:col-span-3">
                                         <label for="address">Straat</label>
-                                        <input type="text" name="straat" id="straat" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                        <input type="text" name="straat" id="straat" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" required/>
                                     </div>
 
                                     <div class="md:col-span-2">
                                         <label for="address">Huisnummer</label>
-                                        <input type="number" name="huisnummer" id="huisnummer" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                        <input type="number" name="huisnummer" id="huisnummer" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" required/>
                                     </div>
 
                                     <div class="md:col-span-2">
                                         <label for="city">Stad</label>
-                                        <input type="text" name="stad" id="stad" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                        <input type="text" name="stad" id="stad" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" required/>
                                     </div>
 
                                     <div class="md:col-span-2">
                                         <label for="country">Land</label>
                                         <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                                            <input name="land" id="land" placeholder="Land" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
+                                            <input name="land" id="land" placeholder="Land" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" required/>
                                         </div>
                                     </div>
 
                                     <div class="md:col-span-2">
                                         <label for="state">Provincie</label>
                                         <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                                            <input name="provincie" id="provincie" placeholder="Provincie" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
+                                            <input name="provincie" id="provincie" placeholder="Provincie" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" required/>
                                         </div>
                                     </div>
 
                                     <div class="md:col-span-1">
                                         <label for="zipcode">Postcode</label>
-                                        <input type="text" name="postcode" id="postcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" value="" />
+                                        <input type="text" name="postcode" id="postcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" value="" required/>
                                     </div>
 
                                     <div class="md:col-span-5 text-right">

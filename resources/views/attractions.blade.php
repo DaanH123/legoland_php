@@ -9,6 +9,7 @@
 
 <body>
     @include('header')
+    <!-- All attractions displayed from database -->
     <div class="flex justify-center items-center min-h-screen">
         <div class="flex flex-col justify-center md:grid md:grid-cols-3 gap-4">
             @foreach ($attractions as $attraction)
