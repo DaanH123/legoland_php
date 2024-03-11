@@ -31,24 +31,40 @@ class OrderticketsController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate de form
+        $validateData = $request->validate([
+            'voornaam' => 'required',
+            'achternaam' => 'required',
+            'email' => 'required|email|max:255',
+            'straat' => 'required',
+            'huisnummer' => 'required',
+            'stad' => 'required',
+            'land' => 'required',
+            'provincie' => 'required',
+            'postcode' => 'required',
+            'ticket_type' => 'required',
+            'aantal' => 'required'
+        ]);
+
         $orderticket = new ordertickets();
 
-        $orderticket->firstname = $request->voornaam;
-        $orderticket->lastname = $request->achternaam;
-        $orderticket->email = $request->email;
-        $orderticket->street = $request->straat;
-        $orderticket->housenumber = $request->huisnummer;
-        $orderticket->city = $request->stad;
-        $orderticket->country = $request->land;
-        $orderticket->state = $request->provincie;
-        $orderticket->zipcode = $request->postcode;
-        $orderticket->tickettype = $request->input('ticket_type');
-        $orderticket->amount = $request->aantal;
+        $orderticket->firstname = $validateData['voornaam'];
+        $orderticket->lastname = $validateData['achternaam'];
+        $orderticket->email = $validateData['email'];
+        $orderticket->street = $validateData['straat'];
+        $orderticket->housenumber = $validateData['huisnummer'];
+        $orderticket->city = $validateData['stad'];
+        $orderticket->country = $validateData['land'];
+        $orderticket->state = $validateData['provincie'];
+        $orderticket->zipcode = $validateData['postcode'];
+        $orderticket->tickettype = $validateData['ticket_type'];
+        $orderticket->amount = $validateData['aantal'];
         $orderticket->paymentmethod = "Ideal";
 
 
         $orderticket->save();
 
+        // Redirect de gebruiker naar de orderconfirmation pagina na het plaatsen van een order
         return redirect()->route('orderconfirmation');
     }
 

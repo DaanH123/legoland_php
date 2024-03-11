@@ -7,16 +7,13 @@
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 text-white">
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Over</a>
-                </li>
-                <li>
                     <a href="{{ route('attractions') }}" class="hover:underline me-4 md:me-6">Attracties</a>
                 </li>
                 <li>
                     <a href="{{ route('tickets') }}" class="hover:underline me-4 md:me-6">Tickets</a>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Contact</a>
+                    <a href="{{ route('contact') }}" class="hover:underline me-4 md:me-6">Contact</a>
                 </li>
                 <li>
                     <a href="{{ route('opentime') }}" class="hover:underline">Openingstijden</a>

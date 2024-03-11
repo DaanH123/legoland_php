@@ -12,19 +12,19 @@ class AttractionsController extends Controller
      */
     public function index()
     {
-        // Fetch all attractions from the database
+        // Haalt alle attracties op uit de database
         $attractions = attractions::all();
     
-        // Return the attractions
+        // Stuurt de attracties mee naar de view
         return $attractions;
     }
 
     public function showAttractionsPage()
     {
-        // Fetch all attractions from the database
+        // Haalt alle attracties op uit de database
         $attractions = attractions::all();
 
-        // Return the attractions view and pass the attractions data to it
+        // Stuurt de attracties mee naar de view
         return view('attractions', compact('attractions'));
     }
 

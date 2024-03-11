@@ -19,6 +19,7 @@
             <p class="mb-5 font-light  sm:text-xl">Hier zijn de ticket prijzen voor Legoland Doetinchem te bekijken alle leeftijds categorieen.</p>
         </div>
         <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <!-- Alle tickets vanuit de database -->
             @foreach($tickets as $ticket)
             <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow xl:p-8 bg-yellow-400 dark:text-white">
                 <h3 class="mb-4 text-2xl font-semibold">{{ $ticket->ticket_title }}</h3>

@@ -12,10 +12,10 @@ class OpentimeController extends Controller
      */
     public function index()
     {
-        //Retrieve all opentimes from the database
+        // Haalt alle opentimes op uit de database
         $opentime = opentime::all();
 
-        //Return opentimes to view
+        // Stuurt de opentimes mee naar de view
         return view('opentime', ['opentime' => $opentime]);
     }
 

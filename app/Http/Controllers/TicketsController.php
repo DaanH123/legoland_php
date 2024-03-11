@@ -12,19 +12,19 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        // Fetch all tickets from the database
+        // Haalt alle tickets op uit de database
         $tickets = tickets::all();
 
-        // Return the tickets
+        // Stuurt de tickets mee naar de view
         return $tickets;
     }
 
     public function showTicketsPage()
     {
-        // Fetch all tickets from the database
+        // Haalt alle tickets op uit de database
         $tickets = tickets::all();
 
-        // Return the tickets view and pass the tickets data to it
+        // Stuurt de tickets mee naar de view
         return view('tickets', compact('tickets'));
     }
 

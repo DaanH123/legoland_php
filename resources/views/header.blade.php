@@ -16,7 +16,6 @@
     </div>
     <div id="menu" class="hidden md:block pt-4 md:pt-0 flex flex-col md:space-x-3 md:flex-row md:justify-evenly text-center text-white w-full md:w-auto">
         <a href="{{ route('home') }}">Home</a>
-        <a href="">Over</a>
         <a href="{{ route('attractions') }}">Attracties</a>
         <a href="{{ route('tickets') }}">Tickets</a>
         <a href="{{ route('opentime') }}">Openingstijden</a>

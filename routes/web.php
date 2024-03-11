@@ -20,43 +20,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Default route (to the homepage)
+// Default route (naar de homepage)
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
-//Route to the homepage
+// Route naar de home pagina
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//Route to the tickets page
+// Route naar de tickets pagina
 Route::get('/tickets', [TicketsController::class, 'showTicketsPage'])->name('tickets');
 
-//Route to the attractions page
+// Route naar de attracrions pagina
 Route::get('/attractions', [AttractionsController::class, 'showAttractionsPage'])->name('attractions');
 
-//Route to the opening times page
+// Route naar de opentimes pagina
 Route::get('/opentimes', [OpentimeController::class, 'index'])->name('opentime');
 
-//Route to the contact page
+// Route naar de contact pagina
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-//Post form to contact controller
+//Post form naar de contact controller
 Route::post('postContactForm', [ContactController::class, 'store']);
 
-//Route to order page
+//R Route naar de order pagina
 Route::get('/order', [OrderticketsController::class, 'index'])->name('order');
 
-//Route to post ticket order
+// Route om het order form te posten
 Route::post('orderticket', [OrderticketsController::class, 'store']);
 
-//Route to the order confirmation page
+// Route naar de order completed pagina
 Route::get('/orderconfirmation', function() {
     return view('ordercompleted');
 })->name('orderconfirmation');
-
-//Route to 404 not allowed page
-Route::get('/notallowed', function() {
-    return view('notallowed');
-})->name('notallowed');
-
-//Route to admin page
-Route::get('/admin', [AdminController::class, 'index'])->name('adminpage');

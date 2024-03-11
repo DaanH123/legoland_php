@@ -29,6 +29,7 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Alle openingstijden van Legoland vanuit de database -->
                 @foreach($opentime as $opentimes)
                 <tr class="bg-white border dark:border-yellow-400">
                     <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">

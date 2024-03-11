@@ -28,12 +28,21 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate de form
+        $validateData = $request->validate([
+            'email' => 'required|email|max:255',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+
+        // Sla de data op in de database
         $contact = new contact();
-        $contact->email = $request->email;
-        $contact->subject = $request->subject;
-        $contact->message = $request->message;
+        $contact->email = $validateData['email'];
+        $contact->subject = $validateData['subject'];
+        $contact->message = $validateData['message'];
         $contact->save();
 
+        // Stuur de gebruiker terug naar de contact pagina met een succes bericht
         session()->flash('success', 'Je bericht is verzonden!');
         return redirect()->route('contact');
     }

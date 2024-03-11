@@ -10,6 +10,7 @@
 <body>
     @include('header')
     @if (session('success'))
+    <!-- Succes message na het sturen van contact formulier -->
     <div class="bg-green-100 border border-green-400 text-center w-1/3 flex justify-center mx-auto text-green-700 px-4 py-3 my-3 rounded" role="alert">
         <strong class="font-bold pr-2">Success!</strong>
         <span class="block sm:inline">{{ session('success') }}</span>

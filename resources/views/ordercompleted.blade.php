@@ -10,7 +10,7 @@
 <body>
     @include('header')
 
-    <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
+    <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl h-screen text-center">
         <div class="p-6 border-l-4 border-green-500 -6 rounded-r-xl bg-green-50">
             <div class="flex">
                 <div class="flex-shrink-0">
@@ -19,7 +19,7 @@
                     </svg>
                 </div>
                 <div class="ml-3">
-                    <div class="text-sm text-green-600">
+                    <div class="text-sm text-green-600 text-center">
                         <p>Je bestelling is succesvol geplaatst</p>
                     </div>
                 </div>

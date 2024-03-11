@@ -14,7 +14,7 @@
             <div class="relative overflow-hidden h-64 md:h-96 rounded-lg">
                 @foreach ($attractions as $attraction)
                 <div class="hidden duration-700 ease-in-out relative h-full" data-carousel-item>
-                    <img src="{{ $attraction->image }}" class="absolute w-full h-full object-cover brightness-50" alt="...">
+                    <img src="{{ $attraction->image }}" class="absolute w-full h-full object-cover brightness-50" alt="Legoland {{ $attraction->name }}">
                     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                         <h1 class="text-white text-2xl font-bold">Welkom bij Legoland Doetinchem</h1>
                         <p class="text-white pb-3">Het park voor iedereen met de beste Attracties</p>
