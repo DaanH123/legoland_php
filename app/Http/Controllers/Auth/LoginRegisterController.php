@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\allowedips;
 use App\Models\contact;
+use App\Models\opentime;
 use App\Models\ordertickets;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -116,10 +117,16 @@ class LoginRegisterController extends Controller
         $contacts = contact::all();
         $users = User::all();
         $ticketorders = ordertickets::all();
+        $opentimes = opentime::all();
     
         if(Auth::check())
         {
-            return view('dashboard', ['contacts' => $contacts, 'users' => $users, 'ticketorders' => $ticketorders]);
+            return view('dashboard', [
+                'contacts' => $contacts,
+                'users' => $users,
+                'ticketorders' => $ticketorders,
+                'opentimes' => $opentimes
+            ]);
         }
         
         return redirect()->route('login')

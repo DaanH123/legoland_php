@@ -61,3 +61,6 @@ Route::post('/authenticate', [LoginRegisterController::class, 'authenticate'])->
 Route::get('/dashboard', [LoginRegisterController::class, 'dashboard'])->name('dashboard');
 Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+Route::put('/opentimes/{id}', [OpentimeController::class, 'update'])->name('opentimes.update');
+Route::delete('/opentimes/{id}', [OpentimeController::class, 'destroy'])->name('opentimes.destroy');

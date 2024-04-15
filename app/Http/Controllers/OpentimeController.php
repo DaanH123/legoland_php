@@ -54,16 +54,28 @@ class OpentimeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, opentime $opentime)
+    public function update(Request $request, $id)
     {
-        //
+        $opentime = OpenTime::find($id);
+        $opentime->day = $request->input('day');
+        $opentime->open_time = $request->input('open_time');
+        $opentime->close_time = $request->input('close_time');
+        $opentime->save();
+
+        return redirect()->back()->with('message', 'Tijd aangepast');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(opentime $opentime)
+    public function destroy($id)
     {
-        //
+        $opentime = OpenTime::find($id);
+        if ($opentime) {
+            $opentime->delete();
+            return redirect()->back()->with('message', 'Tijd verwijderd');
+        } else {
+            return redirect()->back()->with('error', 'Niet gevonden');
+        }
     }
 }
