@@ -113,20 +113,10 @@ class LoginRegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dashboard()
-    {
-        $contacts = contact::all();
-        $users = User::all();
-        $ticketorders = ordertickets::all();
-        $opentimes = opentime::all();
-    
+    {    
         if(Auth::check())
         {
-            return view('dashboard', [
-                'contacts' => $contacts,
-                'users' => $users,
-                'ticketorders' => $ticketorders,
-                'opentimes' => $opentimes
-            ]);
+            return view('dashboard');
         }
         
         return redirect()->route('login')
@@ -148,6 +138,13 @@ class LoginRegisterController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login')
             ->withSuccess('You have logged out successfully!');;
-    }    
+    }  
+    
+    public function userdashboard()
+    {
+        $users = User::all();
+
+        return view('admin.users', ['users' => $users]);
+    }
 
 }

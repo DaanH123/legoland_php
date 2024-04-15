@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OpentimeController;
 use App\Http\Controllers\OrderticketsController;
 use App\Http\Controllers\TicketsController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 // Route naar de home pagina
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index']);
 
 // Route naar de tickets pagina
 Route::get('/tickets', [TicketsController::class, 'showTicketsPage'])->name('tickets');
@@ -64,3 +65,5 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::put('/opentimes/{id}', [OpentimeController::class, 'update'])->name('opentimes.update');
 Route::delete('/opentimes/{id}', [OpentimeController::class, 'destroy'])->name('opentimes.destroy');
+
+Route::get('/users', [LoginRegisterController::class, 'userdashboard'])->name('users');
