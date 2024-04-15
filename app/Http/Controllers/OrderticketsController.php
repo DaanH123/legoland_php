@@ -87,16 +87,39 @@ class OrderticketsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ordertickets $ordertickets)
+    public function update(Request $request, ordertickets $ordertickets, $id)
     {
-        //
+        $ticketorder = ordertickets::find($id);
+
+        $ticketorder->firstname = $request->input('voornaam');
+        $ticketorder->lastname = $request->input('achternaam');
+        $ticketorder->email = $request->input('email');
+        $ticketorder->street = $request->input('straat');
+        $ticketorder->housenumber = $request->input('huisnummer');
+        $ticketorder->city = $request->input('stad');
+        $ticketorder->country = $request->input('land');
+        $ticketorder->state = $request->input('provincie');
+        $ticketorder->zipcode = $request->input('postcode');
+        $ticketorder->tickettype = $request->input('ticket_type');
+        $ticketorder->amount = $request->input('aantal');
+        $ticketorder->paymentmethod = $request->input('payment_method');
+
+        $ticketorder->save();
+
+        return redirect()->route('ticketorders');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ordertickets $ordertickets)
+    public function destroy(ordertickets $ordertickets, $id)
     {
-        //
+        $ticketorder = ordertickets::find($id);
+
+        if ($ticketorder) {
+            $ticketorder->delete();
+        }
+
+        return redirect()->route('ticketorders');
     }
 }

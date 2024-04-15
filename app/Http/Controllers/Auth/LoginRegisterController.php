@@ -20,7 +20,7 @@ class LoginRegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except([
-            'logout', 'dashboard', 'userdashboard'
+            'logout', 'dashboard', 'userdashboard', 'register', 'store'
         ]);
     }
 
@@ -63,11 +63,8 @@ class LoginRegisterController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
         return redirect()->route('dashboard')
-            ->withSuccess('You have successfully registered & logged in!');
+            ->withSuccess('You have successfully registered');
     }
 
     /**
@@ -134,12 +131,5 @@ class LoginRegisterController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login')
             ->withSuccess('You have logged out successfully!');;
-    }
-
-    public function userdashboard()
-    {
-        $users = User::all();
-
-        return view('admin.users', ['users' => $users]);
     }
 }

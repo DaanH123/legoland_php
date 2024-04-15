@@ -74,8 +74,14 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(contact $contact)
+    public function destroy(contact $contact, $id)
     {
-        //
+        $contactForm = contact::find($id);
+
+        if($contactForm) {
+            $contactForm->delete();
+        }
+
+        return redirect()->route('contactforms');
     }
 }

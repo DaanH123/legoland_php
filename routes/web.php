@@ -65,5 +65,15 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::put('/opentimes/{id}', [OpentimeController::class, 'update'])->name('opentimes.update');
 Route::delete('/opentimes/{id}', [OpentimeController::class, 'destroy'])->name('opentimes.destroy');
+Route::get('/opentimesdashboard', [AdminController::class, 'opentimesdashboard'])->name('opentimes');
 
-Route::get('/users', [LoginRegisterController::class, 'userdashboard'])->name('users');
+Route::get('/users', [AdminController::class, 'userdashboard'])->name('users');
+Route::put('/users/{id}', [AdminController::class, 'updateUser'])->name('users.update');
+Route::delete('/users/{id}', [AdminController::class, 'destroyUser'])->name('users.destroy');
+
+Route::get('/ticketorders', [AdminController::class, 'ticketOrdersDashboard'])->name('ticketorders');
+Route::delete('/ticketorders/{id}', [OrderticketsController::class, 'destroy'])->name('ticketorders.destroy');
+Route::put('/ticketorders/{id}', [OrderticketsController::class, 'update'])->name('ticketorders.update');
+
+Route::get('/contactforms', [AdminController::class, 'contactFormDashboard'])->name('contactforms');
+Route::delete('/contactforms/{id}', [ContactController::class, 'destroy'])->name('contactforms.destroy');

@@ -1,5 +1,9 @@
 @include("header")
 
+<div class="flex justify-center itmems-center">
+    <a href="{{ route('dashboard') }}" class="bg-yellow-400 text-white px-2 py-2 mt-10 rounded-2xl">Back to dashboard</a>
+</div>
+
 <div class="flex flex-col justify-center overflow-x-auto shadow-md sm:rounded-lg my-16 w-2/3 mx-auto">
     <h1 class="text-center text-xl font-bold py-4">Contact verzoeken tabel</h1>
     <table class="text-sm text-left rtl:text-right border border-yellow-400">
