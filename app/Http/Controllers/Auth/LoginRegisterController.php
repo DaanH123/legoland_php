@@ -20,7 +20,7 @@ class LoginRegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except([
-            'logout', 'dashboard'
+            'logout', 'dashboard', 'userdashboard'
         ]);
     }
 
@@ -31,16 +31,15 @@ class LoginRegisterController extends Controller
      */
     public function register()
     {
-        if(Auth::user())
-        {
+        if (Auth::user()) {
             return view('register');
-        }
-        else {
+        } else {
             return redirect()->route('login')
                 ->withErrors([
-                'email' => 'Je moet ingelogd zijn om te registreren.',
-            ])->onlyInput('email'
-            );
+                    'email' => 'Je moet ingelogd zijn om te registreren.',
+                ])->onlyInput(
+                    'email'
+                );
         }
     }
 
@@ -68,7 +67,7 @@ class LoginRegisterController extends Controller
         Auth::attempt($credentials);
         $request->session()->regenerate();
         return redirect()->route('dashboard')
-        ->withSuccess('You have successfully registered & logged in!');
+            ->withSuccess('You have successfully registered & logged in!');
     }
 
     /**
@@ -94,8 +93,7 @@ class LoginRegisterController extends Controller
             'password' => 'required'
         ]);
 
-        if(Auth::attempt($credentials))
-        {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('dashboard')
                 ->withSuccess('You have successfully logged in!');
@@ -104,27 +102,25 @@ class LoginRegisterController extends Controller
         return back()->withErrors([
             'email' => 'Your provided credentials do not match in our records.',
         ])->onlyInput('email');
+    }
 
-    } 
-    
     /**
      * Display a dashboard to authenticated users.
      *
      * @return \Illuminate\Http\Response
      */
     public function dashboard()
-    {    
-        if(Auth::check())
-        {
+    {
+        if (Auth::check()) {
             return view('dashboard');
         }
-        
+
         return redirect()->route('login')
             ->withErrors([
-            'email' => 'Please login to access the dashboard.',
-        ])->onlyInput('email');
+                'email' => 'Please login to access the dashboard.',
+            ])->onlyInput('email');
     }
-    
+
     /**
      * Log out the user from application.
      *
@@ -138,13 +134,12 @@ class LoginRegisterController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login')
             ->withSuccess('You have logged out successfully!');;
-    }  
-    
+    }
+
     public function userdashboard()
     {
         $users = User::all();
 
         return view('admin.users', ['users' => $users]);
     }
-
 }
