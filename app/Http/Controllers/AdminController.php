@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Models\admin;
+use App\Models\attractions;
 use App\Models\contact;
 use App\Models\opentime;
 use App\Models\ordertickets;
@@ -96,6 +97,13 @@ class AdminController extends Controller
         $opentimes = opentime::all();
 
         return view('admin.opentimes', ['opentimes' => $opentimes]);
+    }
+
+    public function attractionsdashboard()
+    {
+        $attractions = attractions::all();
+
+        return view('admin.attractionsdashboard', ['attractions' => $attractions]);
     }
 
     public function updateUser(Request $request, $id)

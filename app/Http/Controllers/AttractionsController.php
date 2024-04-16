@@ -24,8 +24,8 @@ class AttractionsController extends Controller
         // Haalt alle attracties op uit de database
         $attractions = attractions::all();
 
-        // Stuurt de attracties mee naar de view
-        return view('attractions', compact('attractions'));
+        // Stuurt de attracties mee naar de view en attractiesdashboard
+        return view('attractions', ['attractions' => $attractions]);
     }
 
     /**
@@ -41,7 +41,17 @@ class AttractionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attractions = new attractions();
+
+        $attractions->name = $request->name;
+        $attractions->description = $request->description;
+        $attractions->image = $request->image;
+        $attractions->min_age = $request->min_age;
+        $attractions->min_length = $request->min_length;
+        $attractions->ride_time = $request->ride_time;
+        $attractions->save();
+
+        return redirect()->route('attractionsdashboard');
     }
 
     /**
@@ -63,16 +73,34 @@ class AttractionsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, attractions $attractions)
+    public function update(Request $request, attractions $attractions, $id)
     {
-        //
+        $attractions = attractions::find($id);
+
+        if($attractions != null) {
+            $attractions->name = $request->name;
+            $attractions->description = $request->description;
+            $attractions->image = $request->image;
+            $attractions->min_age = $request->min_age;
+            $attractions->min_length = $request->min_length;
+            $attractions->ride_time = $request->ride_time;
+            $attractions->save();
+        }
+
+        return redirect()->route('attractionsdashboard');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(attractions $attractions)
+    public function destroy(attractions $attractions, $id)
     {
-        //
+        $attractions = attractions::find($id);
+
+        if($attractions != null) {
+            $attractions->delete();
+        }
+
+        return redirect()->route('attractionsdashboard');
     }
 }

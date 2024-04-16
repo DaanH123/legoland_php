@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccomodatiesController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AttractionsController;
 use App\Http\Controllers\Auth\LoginRegisterController;
@@ -77,3 +78,11 @@ Route::put('/ticketorders/{id}', [OrderticketsController::class, 'update'])->nam
 
 Route::get('/contactforms', [AdminController::class, 'contactFormDashboard'])->name('contactforms');
 Route::delete('/contactforms/{id}', [ContactController::class, 'destroy'])->name('contactforms.destroy');
+
+Route::get('/attractionsdashboard', [AdminController::class, 'attractionsdashboard'])->name('attractionsdashboard');
+Route::post('/attractions', [AttractionsController::class, 'store'])->name('attractions.store');
+Route::put('/attractions/{id}', [AttractionsController::class, 'update'])->name('attractions.update');
+Route::delete('/attractions/{id}', [AttractionsController::class, 'destroy'])->name('attractions.destroy');
+
+Route::get('/accomodaties' , [AccomodatiesController::class, 'showAccomodatiesPage'])->name('accomodaties');
+Route::get('/accomodaties/{id}', [AccomodatiesController::class, 'show'])->name('accomodaties.show');
