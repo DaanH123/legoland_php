@@ -36,6 +36,9 @@ Route::get('/tickets', [TicketsController::class, 'showTicketsPage'])->name('tic
 // Route naar de attracrions pagina
 Route::get('/attractions', [AttractionsController::class, 'showAttractionsPage'])->name('attractions');
 
+// Route naar de attracrion detail pagina
+Route::get('/attractiondetails/{id}', [AttractionsController::class, 'showAttractiondetailsPage'])->name('attractiondetails');
+
 // Route naar de opentimes pagina
 Route::get('/opentimes', [OpentimeController::class, 'index'])->name('opentime');
 

@@ -17,7 +17,11 @@
                 <img class="w-80 rounded-t-xl brightness-50" src="{{ $attraction->image }}" alt="Legoland Doetinchem {{ $attraction->name }}">
                 <p class="font-bold text-2xl px-4 py-2">{{ $attraction->name }}</p>
                 <p class="px-4 py-2">{{ Str::words($attraction->description, 30, '...') }}</p>
-                <p class="px-4 py-2"><i class="fa-solid fa-clock mr-2"></i> {{ $attraction->ride_time ? $attraction->ride_time . ' Seconden': 'Verschillend'}}</p>
+
+                <p class="px-4 py-2"><i class="fa-solid fa-clock mr-2"></i> {{ $attraction->ride_time ? $attraction->ride_time . ' Seconden': 'Verschillend'}} </p>
+                <form action="{{ route('attractiondetails', $attraction->id) }}" class="m-0">
+                <button class="bg-yellow-400 w-full py-2 rounded-b-xl">Meer informatie</button>
+            </form>
             </div>
             @endforeach
         </div>

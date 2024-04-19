@@ -28,6 +28,15 @@ class AttractionsController extends Controller
         return view('attractions', ['attractions' => $attractions]);
     }
 
+    public function showAttractiondetailsPage(Request $request, $id)
+    {
+        // Haalt alle attracties op uit de database
+        $attraction = attractions::find($id);
+
+        // Stuurt de attracties mee naar de view
+        return view('attractiondetails', compact('attraction'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
