@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OpentimeController;
 use App\Http\Controllers\OrderticketsController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\OrderAccommodatieController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,10 @@ Route::get('/order', [OrderticketsController::class, 'index'])->name('order');
 
 // Route om het order form te posten
 Route::post('orderticket', [OrderticketsController::class, 'store']);
+
+Route::get('/orderaccommodatie', [OrderAccommodatieController::class, 'index'])->name('orderaccommodatie');
+
+Route::post('orderaccommodatie', [OrderAccommodatieController::class, 'store']);
 
 // Route naar de order completed pagina
 Route::get('/orderconfirmation', function () {
