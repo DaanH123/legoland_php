@@ -89,3 +89,8 @@ Route::delete('/attractions/{id}', [AttractionsController::class, 'destroy'])->n
 
 Route::get('/accomodaties' , [AccomodatiesController::class, 'showAccomodatiesPage'])->name('accomodaties');
 Route::get('/accomodaties/{id}', [AccomodatiesController::class, 'show'])->name('accomodaties.show');
+
+Route::get('/accomodatiesdashboard', [AdminController::class, 'accomodatiesdashboard'])->name('accomodatiesdashboard');
+Route::post('/accomodaties', [AccomodatiesController::class, 'store'])->name('accomodaties.store');
+Route::put('/accomodaties/{id}', [AccomodatiesController::class, 'update'])->name('accomodaties.update');
+Route::delete('/accomodaties/{id}', [AccomodatiesController::class, 'destroy'])->name('accomodaties.destroy');

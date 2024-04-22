@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Models\accomodaties;
 use App\Models\admin;
 use App\Models\attractions;
 use App\Models\contact;
@@ -129,5 +130,12 @@ class AdminController extends Controller
         $user->delete();
 
         return redirect()->route('users');
+    }
+
+    public function accomodatiesdashboard()
+    {
+        $accomodaties = accomodaties::all();
+
+        return view('admin.accomodatiesdashboard', ['accomodaties' => $accomodaties]);
     }
 }

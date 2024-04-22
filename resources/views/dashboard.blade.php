@@ -9,5 +9,6 @@
         <a href="{{ route('ticketorders') }}" class="bg-yellow-400 text-white px-2 py-2 mt-10 rounded-2xl">Ticketorders</a>
         <a href="{{ route('opentimes') }}" class="bg-yellow-400 text-white px-2 py-2 mt-10 rounded-2xl">Opentimes</a>
         <a href="{{ route('attractionsdashboard') }}" class="bg-yellow-400 text-white px-2 py-2 mt-10 rounded-2xl">Attractions</a>
+        <a href="{{ route('accomodatiesdashboard') }}" class="bg-yellow-400 text-white px-2 py-2 mt-10 rounded-2xl">Accomodaties</a>
     </div>
 </div>

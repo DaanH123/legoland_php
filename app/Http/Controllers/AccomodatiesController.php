@@ -42,7 +42,18 @@ class AccomodatiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $accomodaties = new accomodaties();
+
+        $accomodaties->name = $request->name;
+        $accomodaties->description = $request->description;
+        $accomodaties->image_outside = $request->image_outside;
+        $accomodaties->image_inside = $request->image_inside;
+        $accomodaties->price = $request->price;
+        $accomodaties->max_persons = $request->max_persons;
+
+        $accomodaties->save();
+
+        return redirect()->route('accomodatiesdashboard');
     }
 
     /**
@@ -69,16 +80,34 @@ class AccomodatiesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, accomodaties $accomodaties)
+    public function update(Request $request, accomodaties $accomodaties, $id)
     {
-        //
+        $accomodaties = accomodaties::find($id);
+
+        if($accomodaties != null) {
+            $accomodaties->name = $request->name;
+            $accomodaties->description = $request->description;
+            $accomodaties->image_outside = $request->image_outside;
+            $accomodaties->image_inside = $request->image_inside;
+            $accomodaties->price = $request->price;
+            $accomodaties->max_persons = $request->max_persons;
+            $accomodaties->save();
+        }
+
+        return redirect()->route('accomodatiesdashboard');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(accomodaties $accomodaties)
+    public function destroy(accomodaties $accomodaties, $id)
     {
-        //
+        $accomodatie = accomodaties::find($id);
+
+        if($accomodatie != null) {
+            $accomodatie->delete();
+        }
+
+        return redirect()->route('accomodatiesdashboard');
     }
 }
