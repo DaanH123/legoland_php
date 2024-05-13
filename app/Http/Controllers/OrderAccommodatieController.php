@@ -54,55 +54,48 @@ class OrderAccommodatieController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(orderaccommodaties $orderaccommodaties)
-    // {
-    //     //
-    // }
+    public function show(OrderAccommodatieController $orderaccommodaties)
+    {
+        //
+    }
 
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit(ordertickets $ordertickets)
-    // {
-    //     //
-    // }
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(OrderAccommodatieController $orderaccommodatie)
+    {
+        //
+    }
 
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, ordertickets $ordertickets, $id)
-    // {
-    //     $ticketorder = ordertickets::find($id);
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, AccomodatiesController $orderaccommodatie, $id)
+    {
+        $orderaccommodatie = orderaccommodatie::find($id);
 
-    //     $ticketorder->firstname = $request->input('voornaam');
-    //     $ticketorder->lastname = $request->input('achternaam');
-    //     $ticketorder->email = $request->input('email');
-    //     $ticketorder->street = $request->input('straat');
-    //     $ticketorder->housenumber = $request->input('huisnummer');
-    //     $ticketorder->city = $request->input('stad');
-    //     $ticketorder->country = $request->input('land');
-    //     $ticketorder->state = $request->input('provincie');
-    //     $ticketorder->zipcode = $request->input('postcode');
-    //     $ticketorder->tickettype = $request->input('ticket_type');
-    //     $ticketorder->amount = $request->input('aantal');
-    //     $ticketorder->paymentmethod = $request->input('payment_method');
+        if ($orderaccommodatie) {
+            $orderaccommodatie->firstname = $request->firstname;
+            $orderaccommodatie->lastname = $request->lastname;
+            $orderaccommodatie->email = $request->email;
 
-    //     $ticketorder->save();
+            $orderaccommodatie->save();
+        }
 
-    //     return redirect()->route('ticketorders');
-    // }
+        return redirect()->route('accommodatieorders');
+    }
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  */
-    // public function destroy(ordertickets $ordertickets, $id)
-    // {
-    //     $ticketorder = ordertickets::find($id);
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(OrderAccommodatieController $orderaccommodatie, $id)
+    {
+        $orderaccommodatie = orderaccommodatie::find($id);
 
-    //     if ($ticketorder) {
-    //         $ticketorder->delete();
-    //     }
+        if ($orderaccommodatie) {
+            $orderaccommodatie->delete();
+        }
 
-    //     return redirect()->route('ticketorders');
-    // }
+        return redirect()->route('accommodatieorders');
+    }
 }

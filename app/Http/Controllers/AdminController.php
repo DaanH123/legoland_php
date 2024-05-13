@@ -8,6 +8,7 @@ use App\Models\admin;
 use App\Models\attractions;
 use App\Models\contact;
 use App\Models\opentime;
+use App\Models\orderaccommodatie;
 use App\Models\ordertickets;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -137,5 +138,12 @@ class AdminController extends Controller
         $accomodaties = accomodaties::all();
 
         return view('admin.accomodatiesdashboard', ['accomodaties' => $accomodaties]);
+    }
+
+    public function orderAccommodatiesDashboard()
+    {
+        $orderaccommodaties = orderaccommodatie::all();
+
+        return view('admin.orderaccommodatiedashboard', ['orderaccommodaties' => $orderaccommodaties]);
     }
 }

@@ -99,3 +99,8 @@ Route::get('/accomodatiesdashboard', [AdminController::class, 'accomodatiesdashb
 Route::post('/accomodaties', [AccomodatiesController::class, 'store'])->name('accomodaties.store');
 Route::put('/accomodaties/{id}', [AccomodatiesController::class, 'update'])->name('accomodaties.update');
 Route::delete('/accomodaties/{id}', [AccomodatiesController::class, 'destroy'])->name('accomodaties.destroy');
+
+Route::get('/orderaccommodaties', [AdminController::class, 'orderAccommodatiesDashboard'])->name('accommodatieorders');
+Route::delete('/orderaccommodaties/{id}', [OrderAccommodatieController::class, 'destroy'])->name('orderaccommodaties.destroy');
+Route::put('/orderaccommodaties/{id}', [OrderAccommodatieController::class, 'update'])->name('orderaccommodaties.update');
+Route::get('/orderaccommodatiedashboard', [AdminController::class, 'orderaccommodatiedashboard'])->name('orderaccommodatiedashboard');
