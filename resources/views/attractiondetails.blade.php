@@ -1,7 +1,7 @@
 @include('header')
 
-<div class="block flex justify-center md:justify-evenly items-center my-20 lg:text-start flex-col">
-        <img src="{{ $attraction->image }}" alt="" class="w-[80%] lg:w-[35%]">
+<div class="block flex justify-center md:justify-evenly items-center my-20 lg:text-start flex-col lg:flex-row">
+        <img src="{{ $attraction->image }}" alt="" class="w-[80%] lg:w-[35%] rounded-2xl">
     <div class="mt-10 lg:text-start text-center">
         <h3 class="font-bold text-2xl">{{ $attraction->name }}</h3>
         <p class="mt-2 max-w-xl mx-auto px-4 lg:px-0">{{ $attraction->description }}</p>
