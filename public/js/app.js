@@ -2412,45 +2412,44 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var addAttractionsButton = document.querySelector('#addAttraction');
   var addAttractionForm = document.querySelector('#addAttractionForm');
-  addAttractionsButton.addEventListener('click', function () {
-    addAttractionForm.classList.toggle('hidden');
-  });
+  if (addAttractionsButton) {
+    addAttractionsButton.addEventListener('click', function () {
+      addAttractionForm.classList.toggle('hidden');
+    });
+  }
 });
 window.addEventListener('DOMContentLoaded', function (event) {
-  var slideshows = document.querySelectorAll('.slideshow-container');
+  var slideshows = document.querySelectorAll('[data-carousel="static"]');
   slideshows.forEach(function (slideshow) {
-    var currentSlideIndex = 1;
+    var currentSlideIndex = 0;
+    var slides = slideshow.querySelectorAll('[data-carousel-item] img');
     showSlides(slideshow, currentSlideIndex);
-    var prevButton = slideshow.querySelector(".prev");
-    var nextButton = slideshow.querySelector(".next");
+    var prevButton = slideshow.querySelector("[data-carousel-prev]");
+    var nextButton = slideshow.querySelector("[data-carousel-next]");
     prevButton.addEventListener('click', function () {
-      showSlides(slideshow, --currentSlideIndex);
+      currentSlideIndex = currentSlideIndex > 0 ? currentSlideIndex - 1 : slides.length - 1;
+      showSlides(slideshow, currentSlideIndex);
     });
     nextButton.addEventListener('click', function () {
-      showSlides(slideshow, ++currentSlideIndex);
+      currentSlideIndex = currentSlideIndex < slides.length - 1 ? currentSlideIndex + 1 : 0;
+      showSlides(slideshow, currentSlideIndex);
     });
   });
   function showSlides(slideshow, n) {
-    var i;
-    var slides = slideshow.getElementsByClassName("mySlides");
-    if (n > slides.length) {
-      n = 1;
-    }
-    if (n < 1) {
-      n = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slides[n - 1].style.display = "block";
+    var slides = slideshow.querySelectorAll('[data-carousel-item] img');
+    slides.forEach(function (slide, index) {
+      slide.style.display = index === n ? 'block' : 'none';
+    });
   }
 });
 document.addEventListener('DOMContentLoaded', function () {
   var visitAccommodation = document.querySelector('#visitAccommodation');
   var visitAccommodationForm = document.querySelector('#visitAccommodationForm');
-  visitAccommodation.addEventListener('click', function () {
-    visitAccommodationForm.submit();
-  });
+  if (visitAccommodation) {
+    visitAccommodation.addEventListener('click', function () {
+      visitAccommodationForm.submit();
+    });
+  }
 });
 })();
 
