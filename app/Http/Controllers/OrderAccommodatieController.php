@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class OrderAccommodatieController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $accommodaties = accomodaties::all();
+        $selectedAccommodatieId = $request->get('accomodatie_id');
 
-        return view('accommodatieorder', ['accommodaties' => $accommodaties]);
+        return view('accommodatieorder', [
+            'accommodaties' => $accommodaties,
+            'selectedAccommodatieId' => $selectedAccommodatieId,
+        ]);
     }
 
     /**
@@ -28,26 +32,34 @@ class OrderAccommodatieController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate de form
+        // Validate the form
         $validateData = $request->validate([
             'voornaam' => 'required',
             'achternaam' => 'required',
             'email' => 'required|email|max:255',
             'accommodatie_id' => 'required',
+            'dates' => 'required',
         ]);
-
+    
         $orderaccommodatie = new orderaccommodatie();
-
+    
         $orderaccommodatie->firstname = $validateData['voornaam'];
         $orderaccommodatie->lastname = $validateData['achternaam'];
         $orderaccommodatie->email = $validateData['email'];
         $orderaccommodatie->accommodatie_id = $validateData['accommodatie_id'];
+    
+        if (strpos($validateData['dates'], ' to ') !== false) {
+            list($booked_from, $booked_until) = explode(' to ', $validateData['dates']);
+            $orderaccommodatie->booked_from = $booked_from;
+            $orderaccommodatie->booked_until = $booked_until;
+        } else {
+            dd("Invalid date format");
+        }
+    
         $orderaccommodatie->paymentmethod = "Ideal";
-
-
+    
         $orderaccommodatie->save();
-
-        // Redirect de gebruiker naar de orderconfirmation pagina na het plaatsen van een order
+    
         return redirect()->route('orderconfirmation');
     }
 
@@ -78,6 +90,9 @@ class OrderAccommodatieController extends Controller
             $orderaccommodatie->firstname = $request->firstname;
             $orderaccommodatie->lastname = $request->lastname;
             $orderaccommodatie->email = $request->email;
+            $orderaccommodatie->accommodatie_id = $request->accommodatie_id;
+            $orderaccommodatie->booked_from = $request->booked_from;
+            $orderaccommodatie->booked_until = $request->booked_until;
 
             $orderaccommodatie->save();
         }

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('email');
             $table->integer('accommodatie_id');
             $table->string('paymentmethod');
+            $table->date('booked_from');
+            $table->date('booked_until');
             $table->timestamps();
         });
     }

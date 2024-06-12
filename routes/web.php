@@ -10,8 +10,10 @@ use App\Http\Controllers\OpentimeController;
 use App\Http\Controllers\OrderticketsController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\OrderAccommodatieController;
+use App\Models\accomodaties;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,3 +106,24 @@ Route::get('/orderaccommodaties', [AdminController::class, 'orderAccommodatiesDa
 Route::delete('/orderaccommodaties/{id}', [OrderAccommodatieController::class, 'destroy'])->name('orderaccommodaties.destroy');
 Route::put('/orderaccommodaties/{id}', [OrderAccommodatieController::class, 'update'])->name('orderaccommodaties.update');
 Route::get('/orderaccommodatiedashboard', [AdminController::class, 'orderaccommodatiedashboard'])->name('orderaccommodatiedashboard');
+
+Route::get('/unavailable-dates/{id}', function($id) {
+    $bookings = DB::table('orderaccommodaties')
+        ->where('accommodatie_id', $id)
+        ->select('booked_from', 'booked_until')
+        ->get();
+
+    $unavailableDates = [];
+    foreach ($bookings as $booking) {
+        $start = new DateTime($booking->booked_from);
+        $end = new DateTime($booking->booked_until);
+        $interval = DateInterval::createFromDateString('1 day');
+        $period = new DatePeriod($start, $interval, $end);
+
+        foreach ($period as $dt) {
+            $unavailableDates[] = $dt->format("Y-m-d");
+        }
+    }
+
+    return response()->json($unavailableDates);
+});

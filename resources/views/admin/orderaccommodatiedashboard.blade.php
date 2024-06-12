@@ -38,6 +38,18 @@
                     </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    <div class="flex items
+                    center">
+                        Geboekt van
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items
+                    center">
+                        Geboekt tot
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
                     <div class="flex items-center">
                         Aangemaakt op
                     </div>
@@ -72,6 +84,12 @@
                     </td>
                     <td class="px-6 py-4">
                         <input type="text" name="paymentmethod" value="{{ $accommodatieorder->paymentmethod }}">
+                    </td>
+                    <td class="px-6 py-4">
+                        <input type="text" name="booked_from" value="{{ $accommodatieorder->booked_from }}">
+                    </td>
+                    <td class="px-6 py-4">
+                        <input type="text" name="booked_until" value="{{ $accommodatieorder->booked_until }}">
                     </td>
                     <td class="px-6 py-4">
                         <input type="text" name="created_at" value="{{ $accommodatieorder->created_at }}" readonly>

@@ -34,6 +34,7 @@
             <li class="font-bold">Prijs {{ $accomodatie->price }}</li>
         </ul>
         <form class="" action="{{ route('orderaccommodatie') }}">
+            <input type="hidden" name="accomodatie_id" value="{{ $accomodatie->id }}">
             <button class="bg-yellow-400 w-3/4 py-2 rounded-xl mt-6 text-white">Boeken</button>
         </form>
     </div>
